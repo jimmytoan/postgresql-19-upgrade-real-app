@@ -1,0 +1,139 @@
+{
+ "environment": {
+  "date": "2026-11-16T13:02:04.653Z",
+  "host": "Darwin 25.6.0 arm64, 10 cores (Apple M5), 24 GB",
+  "docker": "29.9.3 linux/arm64",
+  "dockerVm": "8 CPUs, 8215052288 bytes",
+  "node": "v22.17.1",
+  "pgDriver": "8.23.1",
+  "images": {
+   "pg18": {
+    "image": "postgres:18.7",
+    "label": "PostgreSQL 18.7",
+    "id": "sha256:4ad5d66c7ff7413c0578fa4a54b9629b804d56ed4802b5d6cb9be5862badd461 postgres@sha256:2ea8630df176ad090ec92136dee850397c5af8781e4bcf2e4162593691c61bbc"
+   },
+   "pg19": {
+    "image": "postgres:19rc2",
+    "label": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+    "id": "sha256:bdb7b04275c45f9c2c25aaf63e3340d99aed33945f3a055d9b0948dffd63c769 postgres@sha256:15924313d5606f326836976643a5f681a64fb30f591e79fcb15e160979323802"
+   },
+   "pg19lab": {
+    "image": "pg19lab-19:rc2",
+    "label": "PostgreSQL 19 RC 2 (pre-release, not GA) + 18.7 binaries",
+    "id": "sha256:fd098785ee05d1683d1c54556a667a059193393cb61b0635079ec2124f938c76"
+   }
+  },
+  "limits": {
+   "cpus": "2",
+   "memory": "2g",
+   "shm": "1g"
+  },
+  "baseSettings": {
+   "shared_buffers": "512MB",
+   "effective_cache_size": "1GB",
+   "work_mem": "16MB",
+   "maintenance_work_mem": "256MB",
+   "max_wal_size": "4GB",
+   "checkpoint_timeout": "15min",
+   "random_page_cost": "1.1",
+   "max_connections": "60"
+  },
+  "releaseStatus": "PostgreSQL 19 is NOT generally available on 2026-11-16. Latest official pre-release is 19 RC 2 (2026-11-12). All \"19\" numbers are RC 2."
+ },
+ "preset": {
+  "scale": "full",
+  "upgradeRepeats": 5,
+  "modes": [
+   "copy",
+   "link",
+   "swap"
+  ],
+  "benchRounds": 5,
+  "serialN": 300,
+  "mixedSeconds": 60,
+  "maintRepeats": 3,
+  "maintRate": 60,
+  "featureN": 5000,
+  "controls": true
+ },
+ "scale": {
+  "posts": 10000,
+  "events": 2000000,
+  "subs": 100000,
+  "embeddings": 10000,
+  "conversations": 10000
+ },
+ "mix": {
+  "postBySlug": 30,
+  "docGet": 10,
+  "listRecent": 15,
+  "listCategory": 10,
+  "listTag": 5,
+  "popular": 5,
+  "search100": 2,
+  "adminList": 2,
+  "countPublished": 3,
+  "eventsForPosts": 3,
+  "subscriberLookup": 2,
+  "viewIncrement": 8,
+  "trackEvent": 4,
+  "subscribe": 1
+ },
+ "variants": {
+  "pg18": {
+   "server": "pg18",
+   "volume": "pg19lab-v18",
+   "settings": {},
+   "note": "18.7 defaults (jit=on)"
+  },
+  "pg18-jit-off": {
+   "server": "pg18",
+   "volume": "pg19lab-v18",
+   "settings": {
+    "jit": "off"
+   },
+   "note": "18.7 with jit=off"
+  },
+  "pg19-upgraded": {
+   "server": "pg19",
+   "volume": "pg19lab-v19u",
+   "settings": {},
+   "note": "19 RC 2 defaults (jit=off) on the pg_upgrade result"
+  },
+  "pg19-upgraded-jit-on": {
+   "server": "pg19",
+   "volume": "pg19lab-v19u",
+   "settings": {
+    "jit": "on"
+   },
+   "note": "19 RC 2 with jit=on"
+  },
+  "pg19-restored": {
+   "server": "pg19",
+   "volume": "pg19lab-v19r",
+   "settings": {},
+   "note": "19 RC 2 defaults on the dump/restore result (lz4 TOAST)"
+  },
+  "pg19-rewritten-pglz": {
+   "server": "pg19",
+   "volume": "pg19lab-c19pglz",
+   "settings": {},
+   "control": true,
+   "note": "19 RC 2, pg_upgrade result, large values rewritten with pglz, table rebuilt"
+  },
+  "pg19-rewritten-lz4": {
+   "server": "pg19",
+   "volume": "pg19lab-c19lz4",
+   "settings": {},
+   "control": true,
+   "note": "19 RC 2, pg_upgrade result, large values rewritten with lz4, table rebuilt"
+  },
+  "pg18-rewritten-lz4": {
+   "server": "pg18",
+   "volume": "pg19lab-c18lz4",
+   "settings": {},
+   "control": true,
+   "note": "18.7, large values rewritten with lz4, table rebuilt"
+  }
+ }
+}

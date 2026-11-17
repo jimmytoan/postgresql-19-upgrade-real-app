@@ -1,0 +1,44 @@
+[
+ {
+  "variant": "pg19-rewritten-pglz",
+  "note": "19 RC 2, pg_upgrade result, large values rewritten with pglz, table rebuilt",
+  "rewriteMs": 46908.23887500004,
+  "compression": "inline/uncompressed|2100000\npglz|30000",
+  "sizes": {
+   "totalBytes": 2719703040,
+   "heapBytes": 1057636352,
+   "indexBytes": 1542684672,
+   "toastBytes": 119382016,
+   "databaseBytes": 2727729695
+  },
+  "fingerprintMatches": true
+ },
+ {
+  "variant": "pg19-rewritten-lz4",
+  "note": "19 RC 2, pg_upgrade result, large values rewritten with lz4, table rebuilt",
+  "rewriteMs": 47236.25170900009,
+  "compression": "inline/uncompressed|2100000\nlz4|30000",
+  "sizes": {
+   "totalBytes": 2758008832,
+   "heapBytes": 1057636352,
+   "indexBytes": 1542684672,
+   "toastBytes": 157687808,
+   "databaseBytes": 2766035487
+  },
+  "fingerprintMatches": true
+ },
+ {
+  "variant": "pg18-rewritten-lz4",
+  "note": "18.7, large values rewritten with lz4, table rebuilt",
+  "rewriteMs": 45322.626750000054,
+  "compression": "inline/uncompressed|2100000\nlz4|30000",
+  "sizes": {
+   "totalBytes": 2758000640,
+   "heapBytes": 1057636352,
+   "indexBytes": 1542684672,
+   "toastBytes": 157679616,
+   "databaseBytes": 2766034623
+  },
+  "fingerprintMatches": true
+ }
+]

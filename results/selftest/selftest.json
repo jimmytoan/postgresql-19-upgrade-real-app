@@ -1,0 +1,176 @@
+{
+ "environment": {
+  "date": "2026-11-17T01:50:45.372Z",
+  "host": "Darwin 25.6.0 arm64, 10 cores (Apple M5), 24 GB",
+  "docker": "29.9.3 linux/arm64",
+  "dockerVm": "8 CPUs, 8215052288 bytes",
+  "node": "v22.17.1",
+  "pgDriver": "8.23.1",
+  "images": {
+   "pg18": {
+    "image": "postgres:18.7",
+    "label": "PostgreSQL 18.7",
+    "id": "sha256:4ad5d66c7ff7413c0578fa4a54b9629b804d56ed4802b5d6cb9be5862badd461 postgres@sha256:2ea8630df176ad090ec92136dee850397c5af8781e4bcf2e4162593691c61bbc"
+   },
+   "pg19": {
+    "image": "postgres:19rc2",
+    "label": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+    "id": "sha256:bdb7b04275c45f9c2c25aaf63e3340d99aed33945f3a055d9b0948dffd63c769 postgres@sha256:15924313d5606f326836976643a5f681a64fb30f591e79fcb15e160979323802"
+   },
+   "pg19lab": {
+    "image": "pg19lab-19:rc2",
+    "label": "PostgreSQL 19 RC 2 (pre-release, not GA) + 18.7 binaries",
+    "id": "sha256:fd098785ee05d1683d1c54556a667a059193393cb61b0635079ec2124f938c76"
+   }
+  },
+  "limits": {
+   "cpus": "2",
+   "memory": "2g",
+   "shm": "1g"
+  },
+  "baseSettings": {
+   "shared_buffers": "512MB",
+   "effective_cache_size": "1GB",
+   "work_mem": "16MB",
+   "maintenance_work_mem": "256MB",
+   "max_wal_size": "4GB",
+   "checkpoint_timeout": "15min",
+   "random_page_cost": "1.1",
+   "max_connections": "60"
+  },
+  "releaseStatus": "PostgreSQL 19 is NOT generally available (checked 2026-11-17: no postgres:19 or 19.0 image exists). Latest official pre-release is 19 RC 2 (2026-11-12). All \"19\" numbers are RC 2."
+ },
+ "passed": true,
+ "checks": [
+  {
+   "name": "pg18: server version is 18.7",
+   "pass": true,
+   "detail": "PostgreSQL 18.7 (Debian 18.7-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"
+  },
+  {
+   "name": "pg18: version default for jit",
+   "pass": true,
+   "detail": "jit=on, JIT provider installed=true"
+  },
+  {
+   "name": "pg18: 50 ms injected delay measured as 50-65 ms",
+   "pass": true,
+   "detail": "p50 54.505 ms"
+  },
+  {
+   "name": "pg18: app queries return correct rows",
+   "pass": true,
+   "detail": "listRecent 10 rows sorted desc, countPublished 180, slug post-7 -> p0000007, email lookup 1"
+  },
+  {
+   "name": "pg18: listRecent uses the app's publishDate index",
+   "pass": true,
+   "detail": "SELECT path, data FROM blog_documents WHERE namespace = $1 AND collection_path = $2 AND (data -> $3::text) = $4::jsonb AND blog_sort_value((data -> $5::text)) I"
+  },
+  {
+   "name": "pg18: JIT detection matches provider availability",
+   "pass": true,
+   "detail": "forced on -> true, off -> false, provider installed true"
+  },
+  {
+   "name": "pg18: data fingerprint detects a one-row change",
+   "pass": true,
+   "detail": "changed then restored"
+  },
+  {
+   "name": "pg18: bloat and its removal are visible in size",
+   "pass": true,
+   "detail": "clean 16482304, bloated 24657920, after VACUUM FULL 8642560"
+  },
+  {
+   "name": "pg18: injected 3 s exclusive lock is measured",
+   "pass": true,
+   "detail": "max latency during 3014.08 ms, waiters 4, AccessExclusive seen for 3010 ms, baseline max 37.97 ms"
+  },
+  {
+   "name": "pg18: control run shows no lock impact",
+   "pass": true,
+   "detail": "max latency 43.46 ms, AccessExclusive 0 ms"
+  },
+  {
+   "name": "pg18: no host stall during the lock test",
+   "pass": true,
+   "detail": "{\"maxLoopGapMs\":1,\"wallSkewMs\":0,\"suspect\":false}"
+  },
+  {
+   "name": "pg19: server version is 19rc2",
+   "pass": true,
+   "detail": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit"
+  },
+  {
+   "name": "pg19: version default for jit",
+   "pass": true,
+   "detail": "jit=off, JIT provider installed=true"
+  },
+  {
+   "name": "pg19: 50 ms injected delay measured as 50-65 ms",
+   "pass": true,
+   "detail": "p50 54.43 ms"
+  },
+  {
+   "name": "pg19: app queries return correct rows",
+   "pass": true,
+   "detail": "listRecent 10 rows sorted desc, countPublished 180, slug post-7 -> p0000007, email lookup 1"
+  },
+  {
+   "name": "pg19: listRecent uses the app's publishDate index",
+   "pass": true,
+   "detail": "SELECT path, data FROM blog_documents WHERE namespace = $1 AND collection_path = $2 AND (data -> $3::text) = $4::jsonb AND blog_sort_value((data -> $5::text)) I"
+  },
+  {
+   "name": "pg19: JIT detection matches provider availability",
+   "pass": true,
+   "detail": "forced on -> true, off -> false, provider installed true"
+  },
+  {
+   "name": "pg19: data fingerprint detects a one-row change",
+   "pass": true,
+   "detail": "changed then restored"
+  },
+  {
+   "name": "pg19: bloat and its removal are visible in size",
+   "pass": true,
+   "detail": "clean 17055744, bloated 26124288, after VACUUM FULL 9183232"
+  },
+  {
+   "name": "pg19: injected 3 s exclusive lock is measured",
+   "pass": true,
+   "detail": "max latency during 3036.46 ms, waiters 4, AccessExclusive seen for 3010 ms, baseline max 54.1 ms"
+  },
+  {
+   "name": "pg19: control run shows no lock impact",
+   "pass": true,
+   "detail": "max latency 42.19 ms, AccessExclusive 0 ms"
+  },
+  {
+   "name": "pg19: no host stall during the lock test",
+   "pass": true,
+   "detail": "{\"maxLoopGapMs\":2,\"wallSkewMs\":0,\"suspect\":false}"
+  },
+  {
+   "name": "stall detector flags a 1.5 s freeze and not an idle wait",
+   "pass": true,
+   "detail": "freeze {\"maxLoopGapMs\":1450,\"wallSkewMs\":1,\"suspect\":true}, idle {\"maxLoopGapMs\":1,\"wallSkewMs\":0,\"suspect\":false}"
+  },
+  {
+   "name": "18 and 19 build identical synthetic data",
+   "pass": true,
+   "detail": "per-collection md5 fingerprints equal"
+  },
+  {
+   "name": "18 and 19 run the same explicit settings",
+   "pass": true,
+   "detail": "checkpoint_timeout=900 effective_cache_size=131072 maintenance_work_mem=262144 max_connections=60 max_wal_size=4096 random_page_cost=1.1 shared_buffers=65536 work_mem=16384"
+  },
+  {
+   "name": "vendored storage layer equals the blog source",
+   "pass": true,
+   "detail": "re-bundled blog/src/lib/storage/postgres.ts (read-only)"
+  }
+ ]
+}

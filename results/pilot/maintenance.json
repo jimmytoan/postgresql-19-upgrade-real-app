@@ -1,0 +1,1069 @@
+[
+ {
+  "case": "pg18 VACUUM FULL",
+  "repeat": 0,
+  "server": "PostgreSQL 18.7 (Debian 18.7-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "host": {
+   "at": "2026-11-16T12:51:58.102Z",
+   "loadavg": [
+    4.11,
+    4.83,
+    4.53
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "discardedAttempts": 0,
+  "bloatTemplate": {
+   "reused": false,
+   "bloatMs": 8468.975000000035,
+   "cleanSizes": {
+    "totalBytes": 360849408,
+    "heapBytes": 109674496,
+    "indexBytes": 228466688,
+    "toastBytes": 22650880,
+    "databaseBytes": 368850623
+   },
+   "sizes": {
+    "totalBytes": 622387200,
+    "heapBytes": 216924160,
+    "indexBytes": 351297536,
+    "toastBytes": 54083584,
+    "databaseBytes": 630388415
+   }
+  },
+  "command": "VACUUM (FULL) blog_documents",
+  "error": null,
+  "stall": {
+   "maxLoopGapMs": 2,
+   "wallSkewMs": -1,
+   "suspect": false
+  },
+  "durationMs": 1682,
+  "rate": 60,
+  "walBytes": 166200592,
+  "baseline": {
+   "all": {
+    "n": 419,
+    "mean": 24.027,
+    "p50": 21.53,
+    "p95": 36.9,
+    "p99": 58.46,
+    "min": 17.35,
+    "max": 67.91,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 377,
+    "mean": 24.09,
+    "p50": 21.23,
+    "p95": 49.57,
+    "p99": 58.95,
+    "min": 17.35,
+    "max": 67.91,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 42,
+    "mean": 23.465,
+    "p50": 23.39,
+    "p95": 28.42,
+    "p99": 31.76,
+    "min": 19.11,
+    "max": 31.76,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "during": {
+   "all": {
+    "n": 102,
+    "mean": 926.541,
+    "p50": 904.72,
+    "p95": 1616.95,
+    "p99": 1682.02,
+    "min": 180.59,
+    "max": 1700.11,
+    "errors": 0,
+    "over1s": 45
+   },
+   "read": {
+    "n": 92,
+    "mean": 942.099,
+    "p50": 920.59,
+    "p95": 1634.45,
+    "p99": 1700.11,
+    "min": 180.59,
+    "max": 1700.11,
+    "errors": 0,
+    "over1s": 42
+   },
+   "write": {
+    "n": 10,
+    "mean": 783.408,
+    "p50": 605.44,
+    "p95": 1488.07,
+    "p99": 1488.07,
+    "min": 215.16,
+    "max": 1488.07,
+    "errors": 0,
+    "over1s": 3
+   },
+   "errorCodes": []
+  },
+  "after": {
+   "all": {
+    "n": 479,
+    "mean": 25.059,
+    "p50": 21.61,
+    "p95": 50.26,
+    "p99": 99.4,
+    "min": 17.14,
+    "max": 176.44,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 404,
+    "mean": 24.845,
+    "p50": 21.38,
+    "p95": 50.26,
+    "p99": 66.57,
+    "min": 17.14,
+    "max": 176.44,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 75,
+    "mean": 26.208,
+    "p50": 22.77,
+    "p95": 30.4,
+    "p99": 132.81,
+    "min": 18.67,
+    "max": 132.81,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "locks": {
+   "samplesDuring": 17,
+   "maxWaitingSessions": 4,
+   "msWithWaiters": 1704,
+   "msAccessExclusiveHeld": 1704,
+   "modesSeen": [
+    "AccessExclusiveLock",
+    "ShareLock"
+   ]
+  },
+  "sizeBefore": {
+   "totalBytes": 622387200,
+   "heapBytes": 216924160,
+   "indexBytes": 351297536,
+   "toastBytes": 54083584,
+   "databaseBytes": 630388415
+  },
+  "sizeAfter": {
+   "totalBytes": 188628992,
+   "heapBytes": 60964864,
+   "indexBytes": 103112704,
+   "toastBytes": 24518656,
+   "databaseBytes": 196638399
+  }
+ },
+ {
+  "case": "pg18 control",
+  "repeat": 0,
+  "server": "PostgreSQL 18.7 (Debian 18.7-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "host": {
+   "at": "2026-11-16T12:52:16.958Z",
+   "loadavg": [
+    3.75,
+    4.72,
+    4.5
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "discardedAttempts": 0,
+  "bloatTemplate": {
+   "reused": false,
+   "bloatMs": 8468.975000000035,
+   "cleanSizes": {
+    "totalBytes": 360849408,
+    "heapBytes": 109674496,
+    "indexBytes": 228466688,
+    "toastBytes": 22650880,
+    "databaseBytes": 368850623
+   },
+   "sizes": {
+    "totalBytes": 622387200,
+    "heapBytes": 216924160,
+    "indexBytes": 351297536,
+    "toastBytes": 54083584,
+    "databaseBytes": 630388415
+   }
+  },
+  "command": "(no maintenance, control)",
+  "error": null,
+  "stall": {
+   "maxLoopGapMs": 2,
+   "wallSkewMs": 0,
+   "suspect": false
+  },
+  "durationMs": 5001,
+  "rate": 60,
+  "walBytes": 3558288,
+  "baseline": {
+   "all": {
+    "n": 419,
+    "mean": 23.943,
+    "p50": 21.43,
+    "p95": 34.97,
+    "p99": 58.03,
+    "min": 17.32,
+    "max": 63.15,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 377,
+    "mean": 24.087,
+    "p50": 21.32,
+    "p95": 48.5,
+    "p99": 58.23,
+    "min": 17.32,
+    "max": 63.15,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 42,
+    "mean": 22.649,
+    "p50": 22.23,
+    "p95": 28.5,
+    "p99": 31.36,
+    "min": 18.91,
+    "max": 31.36,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "during": {
+   "all": {
+    "n": 302,
+    "mean": 24.274,
+    "p50": 21.3,
+    "p95": 47.84,
+    "p99": 58.16,
+    "min": 17.32,
+    "max": 62.29,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 265,
+    "mean": 24.528,
+    "p50": 21.22,
+    "p95": 49.93,
+    "p99": 59.23,
+    "min": 17.32,
+    "max": 62.29,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 37,
+    "mean": 22.453,
+    "p50": 22.28,
+    "p95": 28.07,
+    "p99": 29.25,
+    "min": 18.96,
+    "max": 29.25,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "after": {
+   "all": {
+    "n": 479,
+    "mean": 23.994,
+    "p50": 21.74,
+    "p95": 39.61,
+    "p99": 58.78,
+    "min": 17.22,
+    "max": 76.82,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 404,
+    "mean": 24.26,
+    "p50": 21.68,
+    "p95": 47.57,
+    "p99": 58.78,
+    "min": 17.22,
+    "max": 76.82,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 75,
+    "mean": 22.558,
+    "p50": 22.38,
+    "p95": 27.82,
+    "p99": 30.5,
+    "min": 18.76,
+    "max": 30.5,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "locks": {
+   "samplesDuring": 50,
+   "maxWaitingSessions": 0,
+   "msWithWaiters": 0,
+   "msAccessExclusiveHeld": 0,
+   "modesSeen": []
+  },
+  "sizeBefore": {
+   "totalBytes": 622387200,
+   "heapBytes": 216924160,
+   "indexBytes": 351297536,
+   "toastBytes": 54083584,
+   "databaseBytes": 630412991
+  },
+  "sizeAfter": {
+   "totalBytes": 622419968,
+   "heapBytes": 216924160,
+   "indexBytes": 351330304,
+   "toastBytes": 54083584,
+   "databaseBytes": 630445759
+  }
+ },
+ {
+  "case": "pg19 VACUUM FULL",
+  "repeat": 0,
+  "server": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "host": {
+   "at": "2026-11-16T12:52:48.754Z",
+   "loadavg": [
+    3.59,
+    4.56,
+    4.45
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "discardedAttempts": 0,
+  "bloatTemplate": {
+   "reused": false,
+   "bloatMs": 7960.843874999962,
+   "cleanSizes": {
+    "totalBytes": 360849408,
+    "heapBytes": 109674496,
+    "indexBytes": 228466688,
+    "toastBytes": 22650880,
+    "databaseBytes": 368851487
+   },
+   "sizes": {
+    "totalBytes": 633995264,
+    "heapBytes": 216924160,
+    "indexBytes": 351297536,
+    "toastBytes": 65691648,
+    "databaseBytes": 641997343
+   }
+  },
+  "command": "VACUUM (FULL) blog_documents",
+  "error": null,
+  "stall": {
+   "maxLoopGapMs": 2,
+   "wallSkewMs": -1,
+   "suspect": false
+  },
+  "durationMs": 1731,
+  "rate": 60,
+  "walBytes": 172944288,
+  "baseline": {
+   "all": {
+    "n": 419,
+    "mean": 23.276,
+    "p50": 21.4,
+    "p95": 42.12,
+    "p99": 50.77,
+    "min": 17.28,
+    "max": 58.78,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 377,
+    "mean": 23.368,
+    "p50": 21.32,
+    "p95": 44.11,
+    "p99": 51.97,
+    "min": 17.28,
+    "max": 58.78,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 42,
+    "mean": 22.448,
+    "p50": 21.99,
+    "p95": 26.51,
+    "p99": 31.06,
+    "min": 18.89,
+    "max": 31.06,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "during": {
+   "all": {
+    "n": 105,
+    "mean": 919.149,
+    "p50": 916.77,
+    "p95": 1666.83,
+    "p99": 1732.12,
+    "min": 94.21,
+    "max": 1749.85,
+    "errors": 0,
+    "over1s": 47
+   },
+   "read": {
+    "n": 94,
+    "mean": 940.735,
+    "p50": 933.11,
+    "p95": 1683.43,
+    "p99": 1749.85,
+    "min": 126.4,
+    "max": 1749.85,
+    "errors": 0,
+    "over1s": 44
+   },
+   "write": {
+    "n": 11,
+    "mean": 734.685,
+    "p50": 631.49,
+    "p95": 1537.04,
+    "p99": 1537.04,
+    "min": 94.21,
+    "max": 1537.04,
+    "errors": 0,
+    "over1s": 3
+   },
+   "errorCodes": []
+  },
+  "after": {
+   "all": {
+    "n": 479,
+    "mean": 23.295,
+    "p50": 21.61,
+    "p95": 37.65,
+    "p99": 47.4,
+    "min": 17.34,
+    "max": 77.68,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 405,
+    "mean": 23.172,
+    "p50": 21.42,
+    "p95": 38.34,
+    "p99": 46.65,
+    "min": 17.34,
+    "max": 60.66,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 74,
+    "mean": 23.967,
+    "p50": 22.08,
+    "p95": 31.23,
+    "p99": 77.68,
+    "min": 18.64,
+    "max": 77.68,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "locks": {
+   "samplesDuring": 18,
+   "maxWaitingSessions": 4,
+   "msWithWaiters": 1808,
+   "msAccessExclusiveHeld": 1808,
+   "modesSeen": [
+    "AccessExclusiveLock",
+    "ShareLock"
+   ]
+  },
+  "sizeBefore": {
+   "totalBytes": 633995264,
+   "heapBytes": 216924160,
+   "indexBytes": 351297536,
+   "toastBytes": 65691648,
+   "databaseBytes": 641997343
+  },
+  "sizeAfter": {
+   "totalBytes": 196042752,
+   "heapBytes": 60973056,
+   "indexBytes": 103112704,
+   "toastBytes": 31916032,
+   "databaseBytes": 204053023
+  }
+ },
+ {
+  "case": "pg19 REPACK",
+  "repeat": 0,
+  "server": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "host": {
+   "at": "2026-11-16T12:53:07.634Z",
+   "loadavg": [
+    3.37,
+    4.47,
+    4.42
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "discardedAttempts": 0,
+  "bloatTemplate": {
+   "reused": false,
+   "bloatMs": 7960.843874999962,
+   "cleanSizes": {
+    "totalBytes": 360849408,
+    "heapBytes": 109674496,
+    "indexBytes": 228466688,
+    "toastBytes": 22650880,
+    "databaseBytes": 368851487
+   },
+   "sizes": {
+    "totalBytes": 633995264,
+    "heapBytes": 216924160,
+    "indexBytes": 351297536,
+    "toastBytes": 65691648,
+    "databaseBytes": 641997343
+   }
+  },
+  "command": "REPACK blog_documents",
+  "error": null,
+  "stall": {
+   "maxLoopGapMs": 1,
+   "wallSkewMs": 0,
+   "suspect": false
+  },
+  "durationMs": 1576,
+  "rate": 60,
+  "walBytes": 172626800,
+  "baseline": {
+   "all": {
+    "n": 419,
+    "mean": 23.291,
+    "p50": 21.49,
+    "p95": 35.95,
+    "p99": 46.36,
+    "min": 17.35,
+    "max": 48.7,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 377,
+    "mean": 23.292,
+    "p50": 21.37,
+    "p95": 39.31,
+    "p99": 47.74,
+    "min": 17.35,
+    "max": 48.7,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 42,
+    "mean": 23.279,
+    "p50": 23.15,
+    "p95": 28.3,
+    "p99": 31.92,
+    "min": 19.43,
+    "max": 31.92,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "during": {
+   "all": {
+    "n": 96,
+    "mean": 830.294,
+    "p50": 822.75,
+    "p95": 1513.38,
+    "p99": 1582.72,
+    "min": 86.58,
+    "max": 1582.72,
+    "errors": 0,
+    "over1s": 37
+   },
+   "read": {
+    "n": 87,
+    "mean": 842.828,
+    "p50": 851.71,
+    "p95": 1513.38,
+    "p99": 1582.72,
+    "min": 86.58,
+    "max": 1582.72,
+    "errors": 0,
+    "over1s": 34
+   },
+   "write": {
+    "n": 9,
+    "mean": 709.129,
+    "p50": 558.41,
+    "p95": 1367.83,
+    "p99": 1367.83,
+    "min": 254.34,
+    "max": 1367.83,
+    "errors": 0,
+    "over1s": 3
+   },
+   "errorCodes": []
+  },
+  "after": {
+   "all": {
+    "n": 479,
+    "mean": 23.32,
+    "p50": 21.75,
+    "p95": 38.48,
+    "p99": 46.95,
+    "min": 17.34,
+    "max": 71.6,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 405,
+    "mean": 23.223,
+    "p50": 21.55,
+    "p95": 39.81,
+    "p99": 46.31,
+    "min": 17.34,
+    "max": 70.87,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 74,
+    "mean": 23.853,
+    "p50": 22.52,
+    "p95": 32.07,
+    "p99": 71.6,
+    "min": 18.1,
+    "max": 71.6,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "locks": {
+   "samplesDuring": 16,
+   "maxWaitingSessions": 4,
+   "msWithWaiters": 1605,
+   "msAccessExclusiveHeld": 1605,
+   "modesSeen": [
+    "AccessExclusiveLock",
+    "ShareLock"
+   ]
+  },
+  "sizeBefore": {
+   "totalBytes": 633995264,
+   "heapBytes": 216924160,
+   "indexBytes": 351297536,
+   "toastBytes": 65691648,
+   "databaseBytes": 642013727
+  },
+  "sizeAfter": {
+   "totalBytes": 196009984,
+   "heapBytes": 60973056,
+   "indexBytes": 103088128,
+   "toastBytes": 31907840,
+   "databaseBytes": 204036639
+  }
+ },
+ {
+  "case": "pg19 REPACK (CONCURRENTLY)",
+  "repeat": 0,
+  "server": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "host": {
+   "at": "2026-11-16T12:53:26.469Z",
+   "loadavg": [
+    2.78,
+    4.26,
+    4.34
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "discardedAttempts": 0,
+  "bloatTemplate": {
+   "reused": false,
+   "bloatMs": 7960.843874999962,
+   "cleanSizes": {
+    "totalBytes": 360849408,
+    "heapBytes": 109674496,
+    "indexBytes": 228466688,
+    "toastBytes": 22650880,
+    "databaseBytes": 368851487
+   },
+   "sizes": {
+    "totalBytes": 633995264,
+    "heapBytes": 216924160,
+    "indexBytes": 351297536,
+    "toastBytes": 65691648,
+    "databaseBytes": 641997343
+   }
+  },
+  "command": "REPACK (CONCURRENTLY) blog_documents",
+  "error": null,
+  "stall": {
+   "maxLoopGapMs": 2,
+   "wallSkewMs": 0,
+   "suspect": false
+  },
+  "durationMs": 1857,
+  "rate": 60,
+  "walBytes": 176612112,
+  "baseline": {
+   "all": {
+    "n": 419,
+    "mean": 23.096,
+    "p50": 21.19,
+    "p95": 38.96,
+    "p99": 48.28,
+    "min": 17.31,
+    "max": 54.56,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 377,
+    "mean": 23.147,
+    "p50": 20.94,
+    "p95": 40.68,
+    "p99": 48.98,
+    "min": 17.31,
+    "max": 54.56,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 42,
+    "mean": 22.632,
+    "p50": 22.37,
+    "p95": 28.34,
+    "p99": 29.83,
+    "min": 18.29,
+    "max": 29.83,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "during": {
+   "all": {
+    "n": 113,
+    "mean": 25.397,
+    "p50": 21.52,
+    "p95": 43,
+    "p99": 84.17,
+    "min": 17.62,
+    "max": 89.19,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 100,
+    "mean": 24.81,
+    "p50": 21.31,
+    "p95": 41.61,
+    "p99": 69.51,
+    "min": 17.62,
+    "max": 84.17,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 13,
+    "mean": 29.908,
+    "p50": 24.13,
+    "p95": 89.19,
+    "p99": 89.19,
+    "min": 21.15,
+    "max": 89.19,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "after": {
+   "all": {
+    "n": 479,
+    "mean": 22.915,
+    "p50": 21.64,
+    "p95": 32.49,
+    "p99": 43.62,
+    "min": 17.28,
+    "max": 54.22,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 406,
+    "mean": 22.97,
+    "p50": 21.52,
+    "p95": 36.94,
+    "p99": 43.62,
+    "min": 17.28,
+    "max": 54.22,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 73,
+    "mean": 22.612,
+    "p50": 22.03,
+    "p95": 28.94,
+    "p99": 33.02,
+    "min": 18.77,
+    "max": 33.02,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "locks": {
+   "samplesDuring": 19,
+   "maxWaitingSessions": 0,
+   "msWithWaiters": 0,
+   "msAccessExclusiveHeld": 0,
+   "modesSeen": [
+    "ShareUpdateExclusiveLock"
+   ]
+  },
+  "sizeBefore": {
+   "totalBytes": 633995264,
+   "heapBytes": 216924160,
+   "indexBytes": 351297536,
+   "toastBytes": 65691648,
+   "databaseBytes": 642013727
+  },
+  "sizeAfter": {
+   "totalBytes": 196018176,
+   "heapBytes": 61341696,
+   "indexBytes": 103079936,
+   "toastBytes": 31555584,
+   "databaseBytes": 204085791
+  }
+ },
+ {
+  "case": "pg19 control",
+  "repeat": 0,
+  "server": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "host": {
+   "at": "2026-11-16T12:53:45.661Z",
+   "loadavg": [
+    2.48,
+    4.1,
+    4.28
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "discardedAttempts": 0,
+  "bloatTemplate": {
+   "reused": false,
+   "bloatMs": 7960.843874999962,
+   "cleanSizes": {
+    "totalBytes": 360849408,
+    "heapBytes": 109674496,
+    "indexBytes": 228466688,
+    "toastBytes": 22650880,
+    "databaseBytes": 368851487
+   },
+   "sizes": {
+    "totalBytes": 633995264,
+    "heapBytes": 216924160,
+    "indexBytes": 351297536,
+    "toastBytes": 65691648,
+    "databaseBytes": 641997343
+   }
+  },
+  "command": "(no maintenance, control)",
+  "error": null,
+  "stall": {
+   "maxLoopGapMs": 1,
+   "wallSkewMs": 0,
+   "suspect": false
+  },
+  "durationMs": 5001,
+  "rate": 60,
+  "walBytes": 3863864,
+  "baseline": {
+   "all": {
+    "n": 419,
+    "mean": 23.359,
+    "p50": 21.48,
+    "p95": 37.5,
+    "p99": 46.28,
+    "min": 17.26,
+    "max": 49.42,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 377,
+    "mean": 23.359,
+    "p50": 21.28,
+    "p95": 39.28,
+    "p99": 46.88,
+    "min": 17.26,
+    "max": 49.42,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 42,
+    "mean": 23.355,
+    "p50": 23.21,
+    "p95": 28.47,
+    "p99": 29.83,
+    "min": 19.06,
+    "max": 29.83,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "during": {
+   "all": {
+    "n": 302,
+    "mean": 22.979,
+    "p50": 21.07,
+    "p95": 39.17,
+    "p99": 46.41,
+    "min": 17.29,
+    "max": 54.58,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 265,
+    "mean": 23.075,
+    "p50": 20.89,
+    "p95": 40.76,
+    "p99": 46.48,
+    "min": 17.29,
+    "max": 54.58,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 37,
+    "mean": 22.294,
+    "p50": 21.96,
+    "p95": 31.04,
+    "p99": 31.35,
+    "min": 18.61,
+    "max": 31.35,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "after": {
+   "all": {
+    "n": 478,
+    "mean": 22.777,
+    "p50": 21.08,
+    "p95": 34.94,
+    "p99": 45.49,
+    "min": 17.44,
+    "max": 53.31,
+    "errors": 0,
+    "over1s": 0
+   },
+   "read": {
+    "n": 403,
+    "mean": 22.874,
+    "p50": 20.9,
+    "p95": 38.11,
+    "p99": 45.49,
+    "min": 17.44,
+    "max": 53.31,
+    "errors": 0,
+    "over1s": 0
+   },
+   "write": {
+    "n": 75,
+    "mean": 22.257,
+    "p50": 21.89,
+    "p95": 28.63,
+    "p99": 34.94,
+    "min": 18.87,
+    "max": 34.94,
+    "errors": 0,
+    "over1s": 0
+   },
+   "errorCodes": []
+  },
+  "locks": {
+   "samplesDuring": 50,
+   "maxWaitingSessions": 0,
+   "msWithWaiters": 0,
+   "msAccessExclusiveHeld": 0,
+   "modesSeen": []
+  },
+  "sizeBefore": {
+   "totalBytes": 633995264,
+   "heapBytes": 216924160,
+   "indexBytes": 351297536,
+   "toastBytes": 65691648,
+   "databaseBytes": 642013727
+  },
+  "sizeAfter": {
+   "totalBytes": 634044416,
+   "heapBytes": 216924160,
+   "indexBytes": 351338496,
+   "toastBytes": 65699840,
+   "databaseBytes": 642062879
+  }
+ }
+]

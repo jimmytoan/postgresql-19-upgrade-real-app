@@ -1,0 +1,75 @@
+{
+ "releaseStatus": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+ "pg18": "rejected: 42601 syntax error at or near \"SELECT\"",
+ "correctness": {
+  "existingReturned": true,
+  "newInserted": true
+ },
+ "getOrCreate": {
+  "n": 5000,
+  "hitRatio": 0.8,
+  "approaches": {
+   "app today: SERIALIZABLE txn, SELECT then INSERT (5 round trips)": {
+    "n": 5000,
+    "mean": 0.91,
+    "p50": 0.811,
+    "p95": 1.578,
+    "p99": 1.779,
+    "min": 0.534,
+    "max": 4.773,
+    "walBytesPerCall": 2026,
+    "rowUpdates": 0
+   },
+   "classic: SELECT, then INSERT ON CONFLICT DO NOTHING": {
+    "n": 5000,
+    "mean": 0.382,
+    "p50": 0.302,
+    "p95": 0.869,
+    "p99": 0.976,
+    "min": 0.208,
+    "max": 1.894,
+    "walBytesPerCall": 2014,
+    "rowUpdates": 0
+   },
+   "hack: ON CONFLICT DO UPDATE SET data = existing (1 round trip, writes)": {
+    "n": 5000,
+    "mean": 0.903,
+    "p50": 0.556,
+    "p95": 2.428,
+    "p99": 3.068,
+    "min": 0.253,
+    "max": 6.188,
+    "walBytesPerCall": 15709,
+    "rowUpdates": 4000
+   },
+   "19: ON CONFLICT DO SELECT (1 round trip, no write on hit)": {
+    "n": 5000,
+    "mean": 0.315,
+    "p50": 0.269,
+    "p95": 0.588,
+    "p99": 0.701,
+    "min": 0.192,
+    "max": 2.164,
+    "walBytesPerCall": 2030,
+    "rowUpdates": 0
+   }
+  }
+ },
+ "info": {
+  "data_checksums": "on",
+  "default_toast_compression": "lz4",
+  "io_method": "worker",
+  "jit_above_cost": "100000",
+  "jit": "off",
+  "log_lock_waits": "on",
+  "max_locks_per_transaction": "128",
+  "max_repack_replication_slots": "5",
+  "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+  "shared_buffers": "65536",
+  "wal_level": "replica",
+  "work_mem": "16384",
+  "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "jit_provider_installed": true
+ },
+ "extensions": "pg_stash_advice 1.0"
+}

@@ -1,0 +1,6 @@
+# PostgreSQL 19 RC 2 plus the 18.7 binaries, so pg_upgrade can run 18 -> 19 in one container.
+FROM postgres:19rc2
+COPY --from=postgres:18.7 /usr/lib/postgresql/18 /usr/lib/postgresql/18
+COPY --from=postgres:18.7 /usr/share/postgresql/18 /usr/share/postgresql/18
+COPY upgrade.sh /usr/local/bin/lab-upgrade.sh
+RUN chmod +x /usr/local/bin/lab-upgrade.sh

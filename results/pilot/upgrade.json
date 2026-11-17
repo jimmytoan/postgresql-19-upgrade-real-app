@@ -1,0 +1,788 @@
+[
+ {
+  "repeat": 0,
+  "method": "pg_upgrade --copy",
+  "from": "PostgreSQL 18.7",
+  "to": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+  "host": {
+   "at": "2026-11-16T12:45:34.148Z",
+   "loadavg": [
+    3.86,
+    4.52,
+    4.39
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "cloneMs": 925.6821670000027,
+  "containerMs": 2668.3649159999986,
+  "exit": 0,
+  "steps": {
+   "initdb": {
+    "ms": 270,
+    "exit": 0
+   },
+   "check": {
+    "ms": 556,
+    "exit": 0
+   },
+   "upgrade": {
+    "ms": 1546,
+    "exit": 0
+   },
+   "carry_pg_hba": {
+    "ms": 1,
+    "exit": 0
+   }
+  },
+  "old_mb": 1000,
+  "new_mb": 392,
+  "log": "SIZE old_mb 1000\nSTEP initdb 270 0\nSTEP check 556 0\nSTEP upgrade 1546 0\nSTEP carry_pg_hba 1 0\nSIZE new_mb 392\n--- upgrade log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nCreating dump of global objects                               ok\nCreating dump of database schemas                             ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\nIf pg_upgrade fails after this point, you must re-initdb the\nnew cluster before continuing.\n\nPerforming Upgrade\n------------------\nSetting locale and encoding for new cluster                   ok\nAnalyzing all rows in the new cluster                         ok\nFreezing all rows in the new cluster                          ok\nDeleting files from new pg_xact                               ok\nCopying old pg_xact to new server                             ok\nSetting oldest XID for new cluster                            ok\nSetting next transaction ID and epoch for new cluster         ok\nDeleting files from new pg_multixact/members                  ok\nDeleting files from new pg_multixact/offsets                  ok\nConverting pg_multixact files                                 ok\nSetting next multixact ID and offset for new cluster          ok\nResetting WAL archives                                        ok\nSetting frozenxid and minmxid counters in new cluster         ok\nRestoring global objects in the new cluster                   ok\nRestoring database schemas in the new cluster                 ok\nCopying user relation files                                   ok\nSetting next OID for new cluster                              ok\nSync data directory to disk                                   ok\nCreating script to delete old cluster                         ok\nChecking for extension updates                                ok\n\nUpgrade Complete\n----------------\nSome statistics are not transferred by pg_upgrade.\nOnce you start the new server, consider running these two commands:\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-in-stages --missing-stats-only\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-only\nRunning this script will delete the old cluster's data files:\n    ./delete_old_cluster.sh\n--- check log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\n*Clusters are compatible*\n",
+  "firstStartMs": 160.12741700000333,
+  "statsRowsBeforeAnalyze": 7,
+  "analyzeMissingStats": {
+   "ms": 80.77312499999971,
+   "exit": 0,
+   "stderr": []
+  },
+  "fingerprintMatches": true,
+  "sizes": {
+   "totalBytes": 360849408,
+   "heapBytes": 109674496,
+   "indexBytes": 228466688,
+   "toastBytes": 22650880,
+   "databaseBytes": 368851487
+  },
+  "compression": "inline/uncompressed|220000\npglz|6000",
+  "info": {
+   "data_checksums": "on",
+   "default_toast_compression": "lz4",
+   "io_method": "worker",
+   "jit_above_cost": "100000",
+   "jit": "off",
+   "log_lock_waits": "on",
+   "max_locks_per_transaction": "128",
+   "max_repack_replication_slots": "5",
+   "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+   "shared_buffers": "65536",
+   "wal_level": "replica",
+   "work_mem": "16384",
+   "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+   "jit_provider_installed": true
+  },
+  "appSmoke": {
+   "postBySlug": "ok",
+   "docGet": "ok",
+   "listRecent": "ok",
+   "listCategory": "ok",
+   "listTag": "ok",
+   "popular": "ok",
+   "search100": "ok",
+   "adminList": "ok",
+   "countPublished": "ok",
+   "eventsForPosts": "ok",
+   "subscriberLookup": "ok",
+   "viewIncrement": "ok",
+   "trackEvent": "ok",
+   "subscribe": "ok"
+  },
+  "serverLogProblems": [],
+  "stopMs": 148.66695799999798,
+  "wallSkewMs": -1,
+  "suspect": false,
+  "downtimeMs": 2263.1274170000033
+ },
+ {
+  "repeat": 0,
+  "method": "pg_upgrade --link",
+  "from": "PostgreSQL 18.7",
+  "to": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+  "host": {
+   "at": "2026-11-16T12:45:41.588Z",
+   "loadavg": [
+    3.55,
+    4.45,
+    4.36
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "cloneMs": 829.6444160000028,
+  "containerMs": 2473.1645419999986,
+  "exit": 0,
+  "steps": {
+   "initdb": {
+    "ms": 239,
+    "exit": 0
+   },
+   "check": {
+    "ms": 560,
+    "exit": 0
+   },
+   "upgrade": {
+    "ms": 1350,
+    "exit": 0
+   },
+   "carry_pg_hba": {
+    "ms": 1,
+    "exit": 0
+   }
+  },
+  "old_mb": 1000,
+  "new_mb": 392,
+  "log": "SIZE old_mb 1000\nSTEP initdb 239 0\nSTEP check 560 0\nSTEP upgrade 1350 0\nSTEP carry_pg_hba 1 0\nSIZE new_mb 392\n--- upgrade log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nCreating dump of global objects                               ok\nCreating dump of database schemas                             ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\nIf pg_upgrade fails after this point, you must re-initdb the\nnew cluster before continuing.\n\nPerforming Upgrade\n------------------\nSetting locale and encoding for new cluster                   ok\nAnalyzing all rows in the new cluster                         ok\nFreezing all rows in the new cluster                          ok\nDeleting files from new pg_xact                               ok\nCopying old pg_xact to new server                             ok\nSetting oldest XID for new cluster                            ok\nSetting next transaction ID and epoch for new cluster         ok\nDeleting files from new pg_multixact/members                  ok\nDeleting files from new pg_multixact/offsets                  ok\nConverting pg_multixact files                                 ok\nSetting next multixact ID and offset for new cluster          ok\nResetting WAL archives                                        ok\nSetting frozenxid and minmxid counters in new cluster         ok\nRestoring global objects in the new cluster                   ok\nRestoring database schemas in the new cluster                 ok\nAdding \".old\" suffix to old \"global/pg_control\"               ok\n\nIf you want to start the old cluster, you will need to remove\nthe \".old\" suffix from \"/var/lib/postgresql/18/docker/global/pg_control.old\".\nBecause \"link\" mode was used, the old cluster cannot be safely\nstarted once the new cluster has been started.\nLinking user relation files                                   ok\nSetting next OID for new cluster                              ok\nSync data directory to disk                                   ok\nCreating script to delete old cluster                         ok\nChecking for extension updates                                ok\n\nUpgrade Complete\n----------------\nSome statistics are not transferred by pg_upgrade.\nOnce you start the new server, consider running these two commands:\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-in-stages --missing-stats-only\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-only\nRunning this script will delete the old cluster's data files:\n    ./delete_old_cluster.sh\n--- check log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\n*Clusters are compatible*\n",
+  "firstStartMs": 129.15016699999978,
+  "statsRowsBeforeAnalyze": 7,
+  "analyzeMissingStats": {
+   "ms": 73.2344170000033,
+   "exit": 0,
+   "stderr": []
+  },
+  "fingerprintMatches": true,
+  "sizes": {
+   "totalBytes": 360849408,
+   "heapBytes": 109674496,
+   "indexBytes": 228466688,
+   "toastBytes": 22650880,
+   "databaseBytes": 368851487
+  },
+  "compression": "inline/uncompressed|220000\npglz|6000",
+  "info": {
+   "data_checksums": "on",
+   "default_toast_compression": "lz4",
+   "io_method": "worker",
+   "jit_above_cost": "100000",
+   "jit": "off",
+   "log_lock_waits": "on",
+   "max_locks_per_transaction": "128",
+   "max_repack_replication_slots": "5",
+   "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+   "shared_buffers": "65536",
+   "wal_level": "replica",
+   "work_mem": "16384",
+   "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+   "jit_provider_installed": true
+  },
+  "appSmoke": {
+   "postBySlug": "ok",
+   "docGet": "ok",
+   "listRecent": "ok",
+   "listCategory": "ok",
+   "listTag": "ok",
+   "popular": "ok",
+   "search100": "ok",
+   "adminList": "ok",
+   "countPublished": "ok",
+   "eventsForPosts": "ok",
+   "subscriberLookup": "ok",
+   "viewIncrement": "ok",
+   "trackEvent": "ok",
+   "subscribe": "ok"
+  },
+  "serverLogProblems": [],
+  "stopMs": 159.74016600000323,
+  "wallSkewMs": 0,
+  "suspect": false,
+  "downtimeMs": 2040.1501669999998
+ },
+ {
+  "repeat": 0,
+  "method": "pg_upgrade --swap",
+  "from": "PostgreSQL 18.7",
+  "to": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+  "host": {
+   "at": "2026-11-16T12:45:47.069Z",
+   "loadavg": [
+    3.43,
+    4.41,
+    4.35
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "cloneMs": 655.3654160000006,
+  "containerMs": 2391.674750000002,
+  "exit": 0,
+  "steps": {
+   "initdb": {
+    "ms": 225,
+    "exit": 0
+   },
+   "check": {
+    "ms": 541,
+    "exit": 0
+   },
+   "upgrade": {
+    "ms": 1329,
+    "exit": 0
+   },
+   "carry_pg_hba": {
+    "ms": 1,
+    "exit": 0
+   }
+  },
+  "old_mb": 1000,
+  "new_mb": 392,
+  "log": "SIZE old_mb 1000\nSTEP initdb 225 0\nSTEP check 541 0\nSTEP upgrade 1329 0\nSTEP carry_pg_hba 1 0\nSIZE new_mb 392\n--- upgrade log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nCreating dump of global objects                               ok\nCreating dump of database schemas                             ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\nIf pg_upgrade fails after this point, you must re-initdb the\nnew cluster before continuing.\n\nPerforming Upgrade\n------------------\nSetting locale and encoding for new cluster                   ok\nAnalyzing all rows in the new cluster                         ok\nFreezing all rows in the new cluster                          ok\nDeleting files from new pg_xact                               ok\nCopying old pg_xact to new server                             ok\nSetting oldest XID for new cluster                            ok\nSetting next transaction ID and epoch for new cluster         ok\nDeleting files from new pg_multixact/members                  ok\nDeleting files from new pg_multixact/offsets                  ok\nConverting pg_multixact files                                 ok\nSetting next multixact ID and offset for new cluster          ok\nResetting WAL archives                                        ok\nSetting frozenxid and minmxid counters in new cluster         ok\nRestoring global objects in the new cluster                   ok\nRestoring database schemas in the new cluster                 ok\nAdding \".old\" suffix to old \"global/pg_control\"               ok\n\nBecause \"swap\" mode was used, the old cluster can no longer be\nsafely started.\nSwapping data directories                                     ok\nSetting next OID for new cluster                              ok\nSync data directory to disk                                   ok\nCreating script to delete old cluster                         ok\nChecking for extension updates                                ok\n\nUpgrade Complete\n----------------\nSome statistics are not transferred by pg_upgrade.\nOnce you start the new server, consider running these two commands:\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-in-stages --missing-stats-only\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-only\nRunning this script will delete the old cluster's data files:\n    ./delete_old_cluster.sh\n--- check log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\n*Clusters are compatible*\n",
+  "firstStartMs": 129.85166599999866,
+  "statsRowsBeforeAnalyze": 7,
+  "analyzeMissingStats": {
+   "ms": 78.55329200000051,
+   "exit": 0,
+   "stderr": []
+  },
+  "fingerprintMatches": true,
+  "sizes": {
+   "totalBytes": 360849408,
+   "heapBytes": 109674496,
+   "indexBytes": 228466688,
+   "toastBytes": 22650880,
+   "databaseBytes": 368851487
+  },
+  "compression": "inline/uncompressed|220000\npglz|6000",
+  "info": {
+   "data_checksums": "on",
+   "default_toast_compression": "lz4",
+   "io_method": "worker",
+   "jit_above_cost": "100000",
+   "jit": "off",
+   "log_lock_waits": "on",
+   "max_locks_per_transaction": "128",
+   "max_repack_replication_slots": "5",
+   "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+   "shared_buffers": "65536",
+   "wal_level": "replica",
+   "work_mem": "16384",
+   "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+   "jit_provider_installed": true
+  },
+  "appSmoke": {
+   "postBySlug": "ok",
+   "docGet": "ok",
+   "listRecent": "ok",
+   "listCategory": "ok",
+   "listTag": "ok",
+   "popular": "ok",
+   "search100": "ok",
+   "adminList": "ok",
+   "countPublished": "ok",
+   "eventsForPosts": "ok",
+   "subscriberLookup": "ok",
+   "viewIncrement": "ok",
+   "trackEvent": "ok",
+   "subscribe": "ok"
+  },
+  "serverLogProblems": [],
+  "stopMs": 158.46137499999895,
+  "wallSkewMs": 1,
+  "suspect": false,
+  "downtimeMs": 2000.8516659999987
+ },
+ {
+  "repeat": 0,
+  "method": "pg_dump -Fd -j 2 (19 client) + pg_restore -j 2",
+  "from": "PostgreSQL 18.7",
+  "to": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+  "host": {
+   "at": "2026-11-16T12:45:52.142Z",
+   "loadavg": [
+    3.32,
+    4.37,
+    4.33
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "steps": {
+   "dump_globals": {
+    "ms": 20,
+    "exit": 0
+   },
+   "dump_db": {
+    "ms": 1665,
+    "exit": 0
+   },
+   "restore_globals": {
+    "ms": 17,
+    "exit": 0
+   },
+   "createdb": {
+    "ms": 35,
+    "exit": 0
+   },
+   "restore_db": {
+    "ms": 3549,
+    "exit": 0
+   },
+   "analyze": {
+    "ms": 436,
+    "exit": 0
+   }
+  },
+  "dump_mb": 23,
+  "notes": [
+   "NOTE restore_globals: psql:/dump/globals.sql:16: ERROR:  role \"postgres\" already exists"
+  ],
+  "initdbAndFirstStartMs": 657.7488339999982,
+  "exit": 0,
+  "statsRowsBeforeAnalyze": 7,
+  "analyzeMissingStats": {
+   "ms": 69.86616700000013,
+   "exit": 0,
+   "stderr": []
+  },
+  "fingerprintMatches": true,
+  "sizes": {
+   "totalBytes": 316383232,
+   "heapBytes": 110100480,
+   "indexBytes": 174702592,
+   "toastBytes": 31522816,
+   "databaseBytes": 324524575
+  },
+  "compression": "inline/uncompressed|220000\nlz4|6000",
+  "info": {
+   "data_checksums": "on",
+   "default_toast_compression": "lz4",
+   "io_method": "worker",
+   "jit_above_cost": "100000",
+   "jit": "off",
+   "log_lock_waits": "on",
+   "max_locks_per_transaction": "128",
+   "max_repack_replication_slots": "5",
+   "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+   "shared_buffers": "65536",
+   "wal_level": "replica",
+   "work_mem": "16384",
+   "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+   "jit_provider_installed": true
+  },
+  "appSmoke": {
+   "postBySlug": "ok",
+   "docGet": "ok",
+   "listRecent": "ok",
+   "listCategory": "ok",
+   "listTag": "ok",
+   "popular": "ok",
+   "search100": "ok",
+   "adminList": "ok",
+   "countPublished": "ok",
+   "eventsForPosts": "ok",
+   "subscriberLookup": "ok",
+   "viewIncrement": "ok",
+   "trackEvent": "ok",
+   "subscribe": "ok"
+  },
+  "serverLogProblems": [
+   "2026-11-16 12:45:56.847 UTC [94] ERROR:  role \"postgres\" already exists"
+  ],
+  "stopMs": 152.42016600000352,
+  "wallSkewMs": 0,
+  "suspect": false,
+  "downtimeMs": 6379.748833999998
+ },
+ {
+  "repeat": 1,
+  "method": "pg_upgrade --copy",
+  "from": "PostgreSQL 18.7",
+  "to": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+  "host": {
+   "at": "2026-11-16T12:46:03.478Z",
+   "loadavg": [
+    2.65,
+    4.17,
+    4.26
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "cloneMs": 682.1247499999954,
+  "containerMs": 2433.1452080000017,
+  "exit": 0,
+  "steps": {
+   "initdb": {
+    "ms": 236,
+    "exit": 0
+   },
+   "check": {
+    "ms": 558,
+    "exit": 0
+   },
+   "upgrade": {
+    "ms": 1459,
+    "exit": 0
+   },
+   "carry_pg_hba": {
+    "ms": 1,
+    "exit": 0
+   }
+  },
+  "old_mb": 1000,
+  "new_mb": 392,
+  "log": "SIZE old_mb 1000\nSTEP initdb 236 0\nSTEP check 558 0\nSTEP upgrade 1459 0\nSTEP carry_pg_hba 1 0\nSIZE new_mb 392\n--- upgrade log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nCreating dump of global objects                               ok\nCreating dump of database schemas                             ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\nIf pg_upgrade fails after this point, you must re-initdb the\nnew cluster before continuing.\n\nPerforming Upgrade\n------------------\nSetting locale and encoding for new cluster                   ok\nAnalyzing all rows in the new cluster                         ok\nFreezing all rows in the new cluster                          ok\nDeleting files from new pg_xact                               ok\nCopying old pg_xact to new server                             ok\nSetting oldest XID for new cluster                            ok\nSetting next transaction ID and epoch for new cluster         ok\nDeleting files from new pg_multixact/members                  ok\nDeleting files from new pg_multixact/offsets                  ok\nConverting pg_multixact files                                 ok\nSetting next multixact ID and offset for new cluster          ok\nResetting WAL archives                                        ok\nSetting frozenxid and minmxid counters in new cluster         ok\nRestoring global objects in the new cluster                   ok\nRestoring database schemas in the new cluster                 ok\nCopying user relation files                                   ok\nSetting next OID for new cluster                              ok\nSync data directory to disk                                   ok\nCreating script to delete old cluster                         ok\nChecking for extension updates                                ok\n\nUpgrade Complete\n----------------\nSome statistics are not transferred by pg_upgrade.\nOnce you start the new server, consider running these two commands:\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-in-stages --missing-stats-only\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-only\nRunning this script will delete the old cluster's data files:\n    ./delete_old_cluster.sh\n--- check log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\n*Clusters are compatible*\n",
+  "firstStartMs": 118.24399999999878,
+  "statsRowsBeforeAnalyze": 7,
+  "analyzeMissingStats": {
+   "ms": 110.31254099999933,
+   "exit": 0,
+   "stderr": []
+  },
+  "fingerprintMatches": true,
+  "sizes": {
+   "totalBytes": 360849408,
+   "heapBytes": 109674496,
+   "indexBytes": 228466688,
+   "toastBytes": 22650880,
+   "databaseBytes": 368851487
+  },
+  "compression": "inline/uncompressed|220000\npglz|6000",
+  "info": {
+   "data_checksums": "on",
+   "default_toast_compression": "lz4",
+   "io_method": "worker",
+   "jit_above_cost": "100000",
+   "jit": "off",
+   "log_lock_waits": "on",
+   "max_locks_per_transaction": "128",
+   "max_repack_replication_slots": "5",
+   "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+   "shared_buffers": "65536",
+   "wal_level": "replica",
+   "work_mem": "16384",
+   "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+   "jit_provider_installed": true
+  },
+  "appSmoke": {
+   "postBySlug": "ok",
+   "docGet": "ok",
+   "listRecent": "ok",
+   "listCategory": "ok",
+   "listTag": "ok",
+   "popular": "ok",
+   "search100": "ok",
+   "adminList": "ok",
+   "countPublished": "ok",
+   "eventsForPosts": "ok",
+   "subscriberLookup": "ok",
+   "viewIncrement": "ok",
+   "trackEvent": "ok",
+   "subscribe": "ok"
+  },
+  "serverLogProblems": [],
+  "stopMs": 144.22762499999953,
+  "wallSkewMs": 0,
+  "suspect": false,
+  "downtimeMs": 2136.243999999999
+ },
+ {
+  "repeat": 1,
+  "method": "pg_upgrade --link",
+  "from": "PostgreSQL 18.7",
+  "to": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+  "host": {
+   "at": "2026-11-16T12:46:08.630Z",
+   "loadavg": [
+    2.6,
+    4.13,
+    4.25
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "cloneMs": 816.0377090000038,
+  "containerMs": 2377.1590419999993,
+  "exit": 0,
+  "steps": {
+   "initdb": {
+    "ms": 233,
+    "exit": 0
+   },
+   "check": {
+    "ms": 549,
+    "exit": 0
+   },
+   "upgrade": {
+    "ms": 1320,
+    "exit": 0
+   },
+   "carry_pg_hba": {
+    "ms": 1,
+    "exit": 0
+   }
+  },
+  "old_mb": 1000,
+  "new_mb": 392,
+  "log": "SIZE old_mb 1000\nSTEP initdb 233 0\nSTEP check 549 0\nSTEP upgrade 1320 0\nSTEP carry_pg_hba 1 0\nSIZE new_mb 392\n--- upgrade log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nCreating dump of global objects                               ok\nCreating dump of database schemas                             ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\nIf pg_upgrade fails after this point, you must re-initdb the\nnew cluster before continuing.\n\nPerforming Upgrade\n------------------\nSetting locale and encoding for new cluster                   ok\nAnalyzing all rows in the new cluster                         ok\nFreezing all rows in the new cluster                          ok\nDeleting files from new pg_xact                               ok\nCopying old pg_xact to new server                             ok\nSetting oldest XID for new cluster                            ok\nSetting next transaction ID and epoch for new cluster         ok\nDeleting files from new pg_multixact/members                  ok\nDeleting files from new pg_multixact/offsets                  ok\nConverting pg_multixact files                                 ok\nSetting next multixact ID and offset for new cluster          ok\nResetting WAL archives                                        ok\nSetting frozenxid and minmxid counters in new cluster         ok\nRestoring global objects in the new cluster                   ok\nRestoring database schemas in the new cluster                 ok\nAdding \".old\" suffix to old \"global/pg_control\"               ok\n\nIf you want to start the old cluster, you will need to remove\nthe \".old\" suffix from \"/var/lib/postgresql/18/docker/global/pg_control.old\".\nBecause \"link\" mode was used, the old cluster cannot be safely\nstarted once the new cluster has been started.\nLinking user relation files                                   ok\nSetting next OID for new cluster                              ok\nSync data directory to disk                                   ok\nCreating script to delete old cluster                         ok\nChecking for extension updates                                ok\n\nUpgrade Complete\n----------------\nSome statistics are not transferred by pg_upgrade.\nOnce you start the new server, consider running these two commands:\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-in-stages --missing-stats-only\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-only\nRunning this script will delete the old cluster's data files:\n    ./delete_old_cluster.sh\n--- check log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\n*Clusters are compatible*\n",
+  "firstStartMs": 137.19204100000206,
+  "statsRowsBeforeAnalyze": 7,
+  "analyzeMissingStats": {
+   "ms": 76.70429100000183,
+   "exit": 0,
+   "stderr": []
+  },
+  "fingerprintMatches": true,
+  "sizes": {
+   "totalBytes": 360849408,
+   "heapBytes": 109674496,
+   "indexBytes": 228466688,
+   "toastBytes": 22650880,
+   "databaseBytes": 368851487
+  },
+  "compression": "inline/uncompressed|220000\npglz|6000",
+  "info": {
+   "data_checksums": "on",
+   "default_toast_compression": "lz4",
+   "io_method": "worker",
+   "jit_above_cost": "100000",
+   "jit": "off",
+   "log_lock_waits": "on",
+   "max_locks_per_transaction": "128",
+   "max_repack_replication_slots": "5",
+   "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+   "shared_buffers": "65536",
+   "wal_level": "replica",
+   "work_mem": "16384",
+   "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+   "jit_provider_installed": true
+  },
+  "appSmoke": {
+   "postBySlug": "ok",
+   "docGet": "ok",
+   "listRecent": "ok",
+   "listCategory": "ok",
+   "listTag": "ok",
+   "popular": "ok",
+   "search100": "ok",
+   "adminList": "ok",
+   "countPublished": "ok",
+   "eventsForPosts": "ok",
+   "subscriberLookup": "ok",
+   "viewIncrement": "ok",
+   "trackEvent": "ok",
+   "subscribe": "ok"
+  },
+  "serverLogProblems": [],
+  "stopMs": 149.79616700000042,
+  "wallSkewMs": 0,
+  "suspect": false,
+  "downtimeMs": 2007.192041000002
+ },
+ {
+  "repeat": 1,
+  "method": "pg_upgrade --swap",
+  "from": "PostgreSQL 18.7",
+  "to": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+  "host": {
+   "at": "2026-11-16T12:46:13.971Z",
+   "loadavg": [
+    2.71,
+    4.13,
+    4.25
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "cloneMs": 518.7653750000027,
+  "containerMs": 2272.557832999999,
+  "exit": 0,
+  "steps": {
+   "initdb": {
+    "ms": 224,
+    "exit": 0
+   },
+   "check": {
+    "ms": 557,
+    "exit": 0
+   },
+   "upgrade": {
+    "ms": 1327,
+    "exit": 0
+   },
+   "carry_pg_hba": {
+    "ms": 0,
+    "exit": 0
+   }
+  },
+  "old_mb": 1000,
+  "new_mb": 392,
+  "log": "SIZE old_mb 1000\nSTEP initdb 224 0\nSTEP check 557 0\nSTEP upgrade 1327 0\nSTEP carry_pg_hba 0 0\nSIZE new_mb 392\n--- upgrade log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nCreating dump of global objects                               ok\nCreating dump of database schemas                             ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\nIf pg_upgrade fails after this point, you must re-initdb the\nnew cluster before continuing.\n\nPerforming Upgrade\n------------------\nSetting locale and encoding for new cluster                   ok\nAnalyzing all rows in the new cluster                         ok\nFreezing all rows in the new cluster                          ok\nDeleting files from new pg_xact                               ok\nCopying old pg_xact to new server                             ok\nSetting oldest XID for new cluster                            ok\nSetting next transaction ID and epoch for new cluster         ok\nDeleting files from new pg_multixact/members                  ok\nDeleting files from new pg_multixact/offsets                  ok\nConverting pg_multixact files                                 ok\nSetting next multixact ID and offset for new cluster          ok\nResetting WAL archives                                        ok\nSetting frozenxid and minmxid counters in new cluster         ok\nRestoring global objects in the new cluster                   ok\nRestoring database schemas in the new cluster                 ok\nAdding \".old\" suffix to old \"global/pg_control\"               ok\n\nBecause \"swap\" mode was used, the old cluster can no longer be\nsafely started.\nSwapping data directories                                     ok\nSetting next OID for new cluster                              ok\nSync data directory to disk                                   ok\nCreating script to delete old cluster                         ok\nChecking for extension updates                                ok\n\nUpgrade Complete\n----------------\nSome statistics are not transferred by pg_upgrade.\nOnce you start the new server, consider running these two commands:\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-in-stages --missing-stats-only\n    /usr/lib/postgresql/19/bin/vacuumdb -U postgres --all --analyze-only\nRunning this script will delete the old cluster's data files:\n    ./delete_old_cluster.sh\n--- check log\nPerforming Consistency Checks\n-----------------------------\nChecking cluster versions                                     ok\nChecking database connection settings                         ok\nChecking for unsupported encodings                            ok\nChecking names of databases, roles, and tablespaces           ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking oldestXID and oldestMultiXid consistency             ok\nChecking for contrib/isn with bigint-passing mismatch         ok\nChecking logical replication slots                            ok\nChecking subscription state                                   ok\nChecking data type usage                                      ok\nChecking for objects affected by Unicode update               ok\nChecking for not-null constraint inconsistencies              ok\nChecking for uses of gist_inet_ops/gist_cidr_ops              ok\nChecking for presence of required libraries                   ok\nChecking database user is the install user                    ok\nChecking for prepared transactions                            ok\nChecking new cluster tablespace directories                   ok\n\n*Clusters are compatible*\n",
+  "firstStartMs": 139.87916699999914,
+  "statsRowsBeforeAnalyze": 7,
+  "analyzeMissingStats": {
+   "ms": 73.43049999999494,
+   "exit": 0,
+   "stderr": []
+  },
+  "fingerprintMatches": true,
+  "sizes": {
+   "totalBytes": 360849408,
+   "heapBytes": 109674496,
+   "indexBytes": 228466688,
+   "toastBytes": 22650880,
+   "databaseBytes": 368851487
+  },
+  "compression": "inline/uncompressed|220000\npglz|6000",
+  "info": {
+   "data_checksums": "on",
+   "default_toast_compression": "lz4",
+   "io_method": "worker",
+   "jit_above_cost": "100000",
+   "jit": "off",
+   "log_lock_waits": "on",
+   "max_locks_per_transaction": "128",
+   "max_repack_replication_slots": "5",
+   "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+   "shared_buffers": "65536",
+   "wal_level": "replica",
+   "work_mem": "16384",
+   "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+   "jit_provider_installed": true
+  },
+  "appSmoke": {
+   "postBySlug": "ok",
+   "docGet": "ok",
+   "listRecent": "ok",
+   "listCategory": "ok",
+   "listTag": "ok",
+   "popular": "ok",
+   "search100": "ok",
+   "adminList": "ok",
+   "countPublished": "ok",
+   "eventsForPosts": "ok",
+   "subscriberLookup": "ok",
+   "viewIncrement": "ok",
+   "trackEvent": "ok",
+   "subscribe": "ok"
+  },
+  "serverLogProblems": [],
+  "stopMs": 169.6604159999988,
+  "wallSkewMs": 0,
+  "suspect": false,
+  "downtimeMs": 2023.8791669999991
+ },
+ {
+  "repeat": 1,
+  "method": "pg_dump -Fd -j 2 (19 client) + pg_restore -j 2",
+  "from": "PostgreSQL 18.7",
+  "to": "PostgreSQL 19 RC 2 (pre-release, not GA)",
+  "host": {
+   "at": "2026-11-16T12:46:18.810Z",
+   "loadavg": [
+    2.66,
+    4.09,
+    4.23
+   ],
+   "otherContainers": [
+    "agentmemlab-letta",
+    "agentmemlab-neo4j",
+    "agentmemlab-pg"
+   ]
+  },
+  "steps": {
+   "dump_globals": {
+    "ms": 18,
+    "exit": 0
+   },
+   "dump_db": {
+    "ms": 1691,
+    "exit": 0
+   },
+   "restore_globals": {
+    "ms": 16,
+    "exit": 0
+   },
+   "createdb": {
+    "ms": 33,
+    "exit": 0
+   },
+   "restore_db": {
+    "ms": 3522,
+    "exit": 0
+   },
+   "analyze": {
+    "ms": 524,
+    "exit": 0
+   }
+  },
+  "dump_mb": 23,
+  "notes": [
+   "NOTE restore_globals: psql:/dump/globals.sql:16: ERROR:  role \"postgres\" already exists"
+  ],
+  "initdbAndFirstStartMs": 637.8321250000008,
+  "exit": 0,
+  "statsRowsBeforeAnalyze": 7,
+  "analyzeMissingStats": {
+   "ms": 95.6924999999901,
+   "exit": 0,
+   "stderr": []
+  },
+  "fingerprintMatches": true,
+  "sizes": {
+   "totalBytes": 316383232,
+   "heapBytes": 110100480,
+   "indexBytes": 174702592,
+   "toastBytes": 31522816,
+   "databaseBytes": 324524575
+  },
+  "compression": "inline/uncompressed|220000\nlz4|6000",
+  "info": {
+   "data_checksums": "on",
+   "default_toast_compression": "lz4",
+   "io_method": "worker",
+   "jit_above_cost": "100000",
+   "jit": "off",
+   "log_lock_waits": "on",
+   "max_locks_per_transaction": "128",
+   "max_repack_replication_slots": "5",
+   "server_version": "19rc2 (Debian 19~rc2-1.pgdg13+1)",
+   "shared_buffers": "65536",
+   "wal_level": "replica",
+   "work_mem": "16384",
+   "version": "PostgreSQL 19rc2 (Debian 19~rc2-1.pgdg13+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+   "jit_provider_installed": true
+  },
+  "appSmoke": {
+   "postBySlug": "ok",
+   "docGet": "ok",
+   "listRecent": "ok",
+   "listCategory": "ok",
+   "listTag": "ok",
+   "popular": "ok",
+   "search100": "ok",
+   "adminList": "ok",
+   "countPublished": "ok",
+   "eventsForPosts": "ok",
+   "subscriberLookup": "ok",
+   "viewIncrement": "ok",
+   "trackEvent": "ok",
+   "subscribe": "ok"
+  },
+  "serverLogProblems": [
+   "2026-11-16 12:46:22.945 UTC [95] ERROR:  role \"postgres\" already exists"
+  ],
+  "stopMs": 156.81195899999875,
+  "wallSkewMs": 0,
+  "suspect": false,
+  "downtimeMs": 6441.832125000001
+ }
+]

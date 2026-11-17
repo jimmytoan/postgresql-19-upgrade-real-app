@@ -1,0 +1,37 @@
+{
+ "server": "PostgreSQL 18.7",
+ "info": {
+  "data_checksums": "on",
+  "default_toast_compression": "pglz",
+  "io_method": "worker",
+  "jit_above_cost": "100000",
+  "jit": "on",
+  "log_lock_waits": "off",
+  "max_locks_per_transaction": "64",
+  "server_version": "18.7 (Debian 18.7-1.pgdg13+2)",
+  "shared_buffers": "65536",
+  "wal_level": "replica",
+  "work_mem": "16384",
+  "version": "PostgreSQL 18.7 (Debian 18.7-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+  "jit_provider_installed": true
+ },
+ "initAndStartMs": 991.502375,
+ "seedMs": 119794.84854199999,
+ "scale": {
+  "posts": 10000,
+  "events": 2000000,
+  "subs": 100000,
+  "embeddings": 10000,
+  "conversations": 10000
+ },
+ "sizes": {
+  "totalBytes": 3242033152,
+  "heapBytes": 1058750464,
+  "indexBytes": 2069659648,
+  "toastBytes": 113311744,
+  "databaseBytes": 3250042559
+ },
+ "fingerprint": "ai-conversations|10000|c76a549da04938f69a451d1fd20d7ef4\nanalytics-events|2000000|10a4eb7db039a7a5380d7843d15f4c60\nblog-posts|10000|0a42e549e85fbf3f026e34060bc0f82f\ncontent-embeddings|10000|df513ef52bde7f28b02b76f240e22a7a\nnewsletter-subscribers|100000|f16bc2ad7411b51b632604cb82b8895a",
+ "compression": "inline/uncompressed|2100000\npglz|30000",
+ "stopMs": 183.8171250000014
+}

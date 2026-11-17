@@ -1,0 +1,13 @@
+{
+  "name": "pg19-upgrade-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "selftest": "node lab/run.mjs selftest",
+    "pilot": "node lab/run.mjs pilot",
+    "full": "node lab/run.mjs full",
+    "report": "node lab/report.mjs",
+    "vendor": "node lab/vendor.mjs"
+  },
+  "dependencies": { "pg": "8.23.1" }
+}
