@@ -1,6 +1,6 @@
 # PLAN: PostgreSQL 18 → 19 upgrade lab
 
-Status on 16 November 2026: pilot done; full run approved and completed, see `RESULTS.md` (it corrects two pilot conclusions). Nothing is committed.
+Status on 18 November 2026: pilot done; the full run was approved, completed on 16 November and replicated on 17 November (see `RESULTS.md`, which corrects two pilot conclusions). The post is published at https://jimmytoan.com/technology/postgresql-19-upgrade-real-app on RC 2 numbers, labelled as such. Still to do: rerun on 19.0 when it ships and update the post.
 
 ## 1. What was verified against official sources
 
@@ -149,8 +149,8 @@ Working title: **"I upgraded a real app to PostgreSQL 19. The headline features 
 - A practical checklist: `pg_upgrade --check`, carry over `pg_hba.conf`, decide on re-compression, when to
   re-enable JIT.
 
-## 5. Decisions needed
+## 5. Decisions
 
-1. Approve the full run as proposed (about 4–5 hours of laptop time, $0), or shrink it.
-2. Publish on RC 2 numbers clearly labelled, or wait for 19.0 and rerun.
-3. Keep the lab workload mix as is, or supply rough real traffic proportions.
+1. Full run: approved and done, twice (16 and 17 November). Reduced from the proposal to fit time: 300 samples per operation, 60 s mixed runs, 3 maintenance repeats.
+2. Publish: published on 18 November on RC 2 numbers, labelled as RC 2 throughout. Rerun on 19.0 when it ships (change the image tag in `lab/util.mjs`) and update the post.
+3. Workload mix: still the lab's assumed weights. Open if real traffic proportions become available.

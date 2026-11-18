@@ -2,9 +2,11 @@
 
 Measures what changes when a real app moves from PostgreSQL 18 to PostgreSQL 19.
 
-> **Release status on 16 November 2026: PostgreSQL 19 is not generally available.** The latest official
+> **Release status on 18 November 2026: PostgreSQL 19 is not generally available.** The latest official
 > build is **19 RC 2** (12 November 2026, Docker tag `postgres:19rc2`). Every "19" number in this repo is
 > RC 2, compared with **18.7** (`postgres:18.7`). Numbers must be re-run on 19.0 before being quoted as GA results.
+
+Write-up: [I Upgraded My Blog's Database to PostgreSQL 19 RC 2](https://jimmytoan.com/technology/postgresql-19-upgrade-real-app).
 
 The app is the blog next door (`../blog`). Its storage layer is one JSONB document table,
 `blog_documents`, behind a Firestore-shaped query builder.
@@ -41,7 +43,7 @@ On a laptop, keep it awake for the run (`caffeinate -i npm run pilot` on macOS).
 sleeping or frozen host and discards those measurements, but a closed lid still wastes the run.
 
 `npm run full` is the long run described in `PLAN.md`. A single stage can be re-run with
-`node lab/run.mjs pilot --only=bench` (stages: `seed,upgrade,bench,maintenance,features`).
+`node lab/run.mjs pilot --only=bench` (stages: `seed,upgrade,controls,bench,maintenance,features`).
 Results land in `results/<run>/`: `SUMMARY.md` (tables), one JSON file per stage, and `*-raw.json` with
 every individual latency sample.
 
